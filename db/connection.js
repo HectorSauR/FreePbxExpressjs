@@ -19,3 +19,6 @@ connection.connect((err) => {
       connection.threadId
   );
 });
+
+
+module.exports = connection;

@@ -34,26 +34,26 @@ CallsService.getAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return resultado;
 });
 CallsService.getAllMatriz = () => __awaiter(void 0, void 0, void 0, function* () {
-    let [rows] = yield database_1.connectionMatriz.execute('SELECT * FROM cdr');
+    let [rows] = yield database_1.connectionMatriz.execute('SELECT * FROM cdr ORDER BY calldate DESC');
     return rows;
 });
 CallsService.getAllSuc1 = () => __awaiter(void 0, void 0, void 0, function* () {
     let rows;
     try {
-        [rows] = yield database_1.connectionSuc1_replication.execute('SELECT * FROM cdr');
+        [rows] = yield database_1.connectionSuc1_replication.execute('SELECT * FROM cdr ORDER BY calldate DESC');
     }
     catch (e) {
-        [rows] = yield database_1.connectionSuc1.execute('SELECT * FROM cdr');
+        [rows] = yield database_1.connectionSuc1.execute('SELECT * FROM cdr ORDER BY calldate DESC');
     }
     return rows;
 });
 CallsService.getAllSuc2 = () => __awaiter(void 0, void 0, void 0, function* () {
     let rows;
     try {
-        [rows] = yield database_1.connectionSuc2_replication.execute('SELECT * FROM cdr');
+        [rows] = yield database_1.connectionSuc2_replication.execute('SELECT * FROM cdr ORDER BY calldate DESC');
     }
     catch (e) {
-        [rows] = yield database_1.connectionSuc2.execute('SELECT * FROM cdr');
+        [rows] = yield database_1.connectionSuc2.execute('SELECT * FROM cdr ORDER BY calldate DESC');
     }
     return rows;
 });

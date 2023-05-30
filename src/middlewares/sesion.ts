@@ -34,14 +34,13 @@ import { verificarToken } from "../utils/jwt";
 //     }
 // }
 
-const checkToken = async (req: Request, res: Response) => {
+const checkToken = async (req: Request, res: Response, next: NextFunction) => {
     try{
         const jwtRecibida = req.headers.authorization || "";
         const jwt = jwtRecibida.split(" ").pop();
         const sesion = verificarToken(`${jwt}`);
-
         if(sesion){
-            res.status(200).send("TOKEN CORRECTO");
+            next();
             return;
         }
         res.status(401).send("SESION INVALIDA");

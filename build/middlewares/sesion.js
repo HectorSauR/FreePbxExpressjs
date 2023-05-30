@@ -39,13 +39,13 @@ const jwt_1 = require("../utils/jwt");
 //         res.send("SESION INVALIDA");
 //     }
 // }
-const checkToken = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const checkToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const jwtRecibida = req.headers.authorization || "";
         const jwt = jwtRecibida.split(" ").pop();
         const sesion = (0, jwt_1.verificarToken)(`${jwt}`);
         if (sesion) {
-            res.status(200).send("TOKEN CORRECTO");
+            next();
             return;
         }
         res.status(401).send("SESION INVALIDA");
